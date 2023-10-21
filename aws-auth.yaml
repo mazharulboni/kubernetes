@@ -1,0 +1,21 @@
+apiVersion: v2
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::666680140343:role/eksctl-my-eks-cluster-nodegroup-my-NodeInstanceRole-9CtTOOr7As4q
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - userarn: arn:aws:iam::666680140343:user/ccl.ashfaqbd
+      username: ccl.ashfaqbd
+      groups:
+        - system:masters
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-12T10:41:25Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "001"
+  uid: 54d885a3-3484-41d4-b032-41959915d8b6
