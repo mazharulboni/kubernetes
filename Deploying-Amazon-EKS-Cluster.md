@@ -10,7 +10,6 @@ In this lab, you'll learn how to deploy an Amazon EKS cluster, deploy a sample a
 
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
@@ -19,7 +18,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 ```bash
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
-ARCH=amd64
+ARCH=arm64
 PLATFORM=$(uname -s)_$ARCH
 
 curl -sLO "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
@@ -39,15 +38,15 @@ Save the above script as `eksctl.sh` then run `chmod +x eksctl.sh` and `sudo sh 
 1. Create a new Amazon EKS cluster using the `eksctl` command:
 
 ```bash
-eksctl create cluster --name my-eks-19 --region us-east-2 --nodegroup-name my-eks-19-nodegroup --node-type t3.medium --nodes 1 --nodes-min 1 --nodes-max 5 --managed --profile=izzanschool
+eksctl create cluster --name my-first-eks --region us-east-2 --nodegroup-name my-first-eks-nodegroup --node-type t3.medium --nodes 1 --nodes-min 1 --nodes-max 5 --managed --profile=mazharulboni
 ```
 
-Replace `my-eks-cluster` and `us-east-1` with your preferred cluster name and AWS region.
+Replace `my-first-eks` and `us-east-2` with your preferred cluster name and AWS region.
 
-Connect tot he cluster:
+Connect to the cluster:
 
 ```bash
-aws eks update-kubeconfig --kubeconfig kubeconfig --name my-eks-19 --profile=izzanschool
+aws eks update-kubeconfig --kubeconfig kubeconfig --name my-eks-19 --profile=mazharulboni
 export KUBECONFIG="./kubeconfig"
 ```
 
